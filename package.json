@@ -1,0 +1,53 @@
+{
+  "name": "@complycloud/oauth2-client",
+  "version": "0.0.0",
+  "description": "Javascript OAuth 2.0 client library",
+  "main": "dist",
+  "repository": "https://github.com/complycloud/oauth2-client",
+  "author": "Sean Bruton <sean@sean.cloud>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "check": "npm run lint && npm run test",
+    "clean": "rm -rf ./dist",
+    "compile": "npm run clean && babel src ${WATCH:+--watch} --source-maps inline --out-dir dist",
+    "compile:watch": "WATCH=true npm run compile",
+    "lint": "eslint src test",
+    "test": "mocha ${WATCH:+--watch} ${DEBUGGER:+--inspect --debug-brk} --recursive --compilers js:babel-register",
+    "test:watch": "WATCH=true npm run test"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "chai-string": "^1.4.0",
+    "eslint": "^4.7.2",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "mocha": "^3.5.3",
+    "nock": "^9.0.18",
+    "pre-commit": "^1.2.2",
+    "qs": "^6.5.1"
+  },
+  "pre-commit": [
+    "check"
+  ],
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": true
+          }
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "debug": "^3.0.1",
+    "fetch-ponyfill": "^4.1.0",
+    "verror": "^1.10.0"
+  }
+}
